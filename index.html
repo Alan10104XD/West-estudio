@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Salón de belleza profesional. Manicura, pedicura, peluquería y estética facial. Reservá tu cita online.">
+  <title>WEST Estudio — Reservá tu cita online</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════════
+     SITIO PÚBLICO
+════════════════════════════════════════════════════════════ -->
+<div id="public-site">
+
+  <!-- Navbar -->
+  <nav id="navbar">
+    <div class="container">
+      <div class="nav-inner">
+        <a class="nav-logo" href="#inicio" data-target="inicio">
+          <img src="assets/images/logo.jpg" alt="Logo" onerror="this.style.display='none'">
+          <span class="nav-logo-text">WEST Estudio</span>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#inicio"      data-target="inicio"      class="nav-scroll">Inicio</a></li>
+          <li><a href="#servicios"   data-target="servicios"   class="nav-scroll">Servicios</a></li>
+          <li><a href="#reservar"    data-target="reservar"    class="nav-scroll">Reservar</a></li>
+          <li><a href="#galeria"     data-target="galeria"     class="nav-scroll">Galería</a></li>
+          <li><a href="#nosotros"    data-target="nosotros"    class="nav-scroll">Nosotros</a></li>
+          <li><a href="#contacto"    data-target="contacto"    class="nav-scroll">Contacto</a></li>
+        </ul>
+
+        <div class="nav-cta">
+          <a href="#reservar" data-target="reservar" class="btn btn-primary btn-sm nav-scroll">Reservar cita</a>
+          <button class="btn-admin" id="btn-admin-navbar">Admin</button>
+        </div>
+
+        <div class="nav-hamburger" id="hamburger" aria-label="Menú" role="button" tabindex="0">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile nav -->
+  <div id="mobile-nav">
+    <a href="#inicio"      data-target="inicio"      class="nav-scroll">Inicio</a>
+    <a href="#servicios"   data-target="servicios"   class="nav-scroll">Servicios</a>
+    <a href="#reservar"    data-target="reservar"    class="nav-scroll">Reservar cita</a>
+    <a href="#galeria"     data-target="galeria"     class="nav-scroll">Galería</a>
+    <a href="#nosotros"    data-target="nosotros"    class="nav-scroll">Nosotros</a>
+    <a href="#contacto"    data-target="contacto"    class="nav-scroll">Contacto</a>
+  </div>
+
+  <!-- ── Hero ─────────────────────────────────────────────────── -->
+  <section id="inicio">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <div class="hero-eyebrow">✨ Bienvenida a tu espacio de belleza</div>
+          <h1 class="hero-title">
+            Realzá tu<br><span>belleza natural</span><br>con nosotras
+          </h1>
+          <p class="hero-desc">
+            Tratamientos profesionales de manicura, pedicura, peluquería y estética
+            facial. Reservá tu cita online en segundos.
+          </p>
+          <div class="hero-actions">
+            <a href="#reservar" data-target="reservar" class="btn btn-primary btn-lg nav-scroll">Reservar cita</a>
+            <a href="#servicios" data-target="servicios" class="btn btn-secondary btn-lg nav-scroll">Ver servicios</a>
+          </div>
+          <div class="hero-stats">
+            <div>
+              <div class="hero-stat-num">500+</div>
+              <div class="hero-stat-label">Clientas felices</div>
+            </div>
+            <div>
+              <div class="hero-stat-num">8</div>
+              <div class="hero-stat-label">Años de experiencia</div>
+            </div>
+            <div>
+              <div class="hero-stat-num">15+</div>
+              <div class="hero-stat-label">Servicios disponibles</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-image">
+          <div class="hero-img-placeholder">💅</div>
+          <div class="hero-badge">
+            <div class="hero-badge-icon">⭐</div>
+            <div>
+              <div class="hero-badge-text">Calificación 5 estrellas</div>
+              <div class="hero-badge-sub">+300 reseñas positivas</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Servicios ─────────────────────────────────────────────── -->
+  <section id="servicios">
+    <div class="container">
+      <div class="section-header">
+        <div class="gold-line"></div>
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <p class="section-subtitle">Elegí el tratamiento ideal para vos y reservá tu turno online</p>
+      </div>
+
+      <div id="filter-bar" class="filter-bar">
+        <button class="filter-btn active" data-cat="todos" onclick="renderServicios('todos');setActiveFilter(this)">Todos</button>
+      </div>
+
+      <div id="servicios-grid" class="servicios-grid">
+        <!-- cargado desde JS -->
+      </div>
+
+      <!-- Packs -->
+      <div class="packs-section" id="packs-section">
+        <div class="section-header">
+          <div class="gold-line"></div>
+          <h2 class="section-title">Packs y Combos</h2>
+          <p class="section-subtitle">Servicios combinados a precio especial</p>
+        </div>
+        <div id="packs-grid" class="packs-grid"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Reservar ──────────────────────────────────────────────── -->
+  <section id="reservar">
+    <div class="container">
+      <div class="reservar-inner">
+        <div class="reservar-info">
+          <div class="section-header" style="text-align:left">
+            <div class="gold-line"></div>
+            <h2 class="section-title">Reservá tu cita online</h2>
+            <p class="section-subtitle">Rápido, fácil y sin llamadas</p>
+          </div>
+          <div class="reservar-features">
+            <div class="reservar-feature">
+              <div class="reservar-feature-icon">📅</div>
+              <div class="reservar-feature-text">
+                <strong>Elegí fecha y horario</strong>
+                <span>Seleccioná el día y la hora que mejor te quede</span>
+              </div>
+            </div>
+            <div class="reservar-feature">
+              <div class="reservar-feature-icon">💬</div>
+              <div class="reservar-feature-text">
+                <strong>Confirmación por WhatsApp</strong>
+                <span>Recibís confirmación inmediata en tu celular</span>
+              </div>
+            </div>
+            <div class="reservar-feature">
+              <div class="reservar-feature-icon">🔔</div>
+              <div class="reservar-feature-text">
+                <strong>Recordatorio automático</strong>
+                <span>Te avisamos antes de tu cita para que no la olvides</span>
+              </div>
+            </div>
+            <div class="reservar-feature">
+              <div class="reservar-feature-icon">⭐</div>
+              <div class="reservar-feature-text">
+                <strong>Profesionales especializadas</strong>
+                <span>Elegí tu profesional de confianza</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reservar-form-card">
+          <h3>Solicitar cita</h3>
+          <form id="reserva-form" novalidate>
+            <div class="form-row">
+              <div class="field">
+                <label class="field-label">Tu nombre *</label>
+                <input id="reserva-nombre" type="text" class="input" placeholder="Nombre completo" required>
+              </div>
+              <div class="field">
+                <label class="field-label">Teléfono / WhatsApp *</label>
+                <input id="reserva-telefono" type="tel" class="input" placeholder="Ej: 0981 000 000" required>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field-label">Email (opcional)</label>
+              <input id="reserva-email" type="email" class="input" placeholder="tu@email.com">
+            </div>
+            <div class="field">
+              <label class="field-label">Servicio *</label>
+              <select id="reserva-servicio" class="select">
+                <option value="">— Seleccionar servicio —</option>
+              </select>
+            </div>
+            <div class="field">
+              <label class="field-label">O elegir un pack</label>
+              <select id="reserva-pack" class="select">
+                <option value="">— O elegir un pack —</option>
+              </select>
+            </div>
+            <div class="field">
+              <label class="field-label">Profesional</label>
+              <select id="reserva-profesional" class="select">
+                <option value="">Sin preferencia</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label class="field-label">Fecha *</label>
+                <input id="reserva-fecha" type="date" class="input" required>
+              </div>
+              <div class="field">
+                <label class="field-label">Horario *</label>
+                <select id="reserva-hora" class="select" required>
+                  <option value="">— Hora —</option>
+                  <option>08:00</option><option>08:30</option>
+                  <option>09:00</option><option>09:30</option>
+                  <option>10:00</option><option>10:30</option>
+                  <option>11:00</option><option>11:30</option>
+                  <option>12:00</option><option>12:30</option>
+                  <option>13:00</option><option>13:30</option>
+                  <option>14:00</option><option>14:30</option>
+                  <option>15:00</option><option>15:30</option>
+                  <option>16:00</option><option>16:30</option>
+                  <option>17:00</option><option>17:30</option>
+                  <option>18:00</option><option>18:30</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field-label">Nota (opcional)</label>
+              <textarea id="reserva-nota" class="textarea" rows="2" placeholder="Algún pedido especial o consulta…"></textarea>
+            </div>
+            <button type="submit" id="btn-reservar" class="btn btn-gold btn-lg">Solicitar cita ✨</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Galería ────────────────────────────────────────────────── -->
+  <section id="galeria">
+    <div class="container">
+      <div class="section-header">
+        <div class="gold-line"></div>
+        <h2 class="section-title">Galería de Trabajos</h2>
+        <p class="section-subtitle">Mirá algunos de nuestros trabajos recientes</p>
+      </div>
+      <div id="galeria-grid" class="galeria-grid"></div>
+    </div>
+  </section>
+
+  <!-- ── Nosotros ──────────────────────────────────────────────── -->
+  <section id="nosotros">
+    <div class="container">
+      <div class="nosotros-inner">
+        <div class="nosotros-img-wrap">
+          <div class="nosotros-img-placeholder">💇</div>
+        </div>
+        <div class="nosotros-text">
+          <div class="section-header" style="text-align:left">
+            <div class="gold-line"></div>
+            <h2 class="section-title">Nuestro Salón</h2>
+          </div>
+          <p>Somos un salón de belleza con más de 8 años de experiencia brindando servicios de calidad en un ambiente cálido, profesional y acogedor.</p>
+          <p>Nuestro equipo está formado por profesionales especializadas en cada área, comprometidas con mantenerse actualizadas en las últimas tendencias y técnicas del sector.</p>
+          <p>Creemos que cada clienta merece sentirse especial. Por eso trabajamos con productos premium y dedicamos el tiempo necesario para que el resultado supere tus expectativas.</p>
+          <a href="#reservar" data-target="reservar" class="btn btn-primary nav-scroll" style="margin-top:1.5rem">Conocernos en persona</a>
+        </div>
+      </div>
+
+      <div style="margin-top:4rem">
+        <div class="section-header">
+          <div class="gold-line"></div>
+          <h2 class="section-title">Nuestro Equipo</h2>
+          <p class="section-subtitle">Profesionales dedicadas a hacerte lucir increíble</p>
+        </div>
+        <div id="equipo-grid" class="equipo-grid"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Testimonios ───────────────────────────────────────────── -->
+  <section id="testimonios">
+    <div class="container">
+      <div class="section-header">
+        <div class="gold-line"></div>
+        <h2 class="section-title">Lo que dicen nuestras clientas</h2>
+        <p class="section-subtitle">La satisfacción de nuestras clientas es nuestra mayor recompensa</p>
+      </div>
+      <div id="testimonios-grid" class="testimonios-grid"></div>
+
+      <div class="testimonio-form-wrap">
+        <h3>¿Ya visitaste el salón? ¡Dejá tu opinión!</h3>
+        <form id="testimonio-form" novalidate>
+          <div class="field">
+            <label class="field-label">Tu nombre</label>
+            <input id="t-nombre" type="text" class="input" placeholder="Nombre y apellido" required>
+          </div>
+          <div class="field">
+            <label class="field-label">Calificación</label>
+            <div class="rating-input">
+              <button type="button" class="star-btn" data-val="1">★</button>
+              <button type="button" class="star-btn" data-val="2">★</button>
+              <button type="button" class="star-btn" data-val="3">★</button>
+              <button type="button" class="star-btn" data-val="4">★</button>
+              <button type="button" class="star-btn" data-val="5">★</button>
+            </div>
+          </div>
+          <div class="field">
+            <label class="field-label">Tu opinión</label>
+            <textarea id="t-texto" class="textarea" rows="3" placeholder="Contá tu experiencia…" required></textarea>
+          </div>
+          <button type="submit" id="btn-testimonio" class="btn btn-primary">Enviar opinión</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Contacto ──────────────────────────────────────────────── -->
+  <section id="contacto">
+    <div class="container">
+      <div class="section-header">
+        <div class="gold-line"></div>
+        <h2 class="section-title">Contacto</h2>
+        <p class="section-subtitle">Estamos aquí para responder todas tus consultas</p>
+      </div>
+      <div class="contacto-inner">
+        <div class="contacto-info">
+          <div class="contacto-items">
+            <div class="contacto-item">
+              <div class="contacto-item-icon">📍</div>
+              <div>
+                <strong>Dirección</strong>
+                <span>Calle Principal 123, Ciudad</span>
+              </div>
+            </div>
+            <div class="contacto-item">
+              <div class="contacto-item-icon">📞</div>
+              <div>
+                <strong>Teléfono / WhatsApp</strong>
+                <span>+595 981 000 000</span>
+              </div>
+            </div>
+            <div class="contacto-item">
+              <div class="contacto-item-icon">🕐</div>
+              <div>
+                <strong>Horarios de atención</strong>
+                <span>Lun–Vie: 08:00–19:00 · Sáb: 08:00–17:00</span>
+              </div>
+            </div>
+            <div class="contacto-item">
+              <div class="contacto-item-icon">📧</div>
+              <div>
+                <strong>Email</strong>
+                <span>contacto@salon.com.py</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="redes-sociales">
+            <a class="red-social" href="#" aria-label="Instagram" title="Instagram">📸</a>
+            <a class="red-social" href="#" aria-label="Facebook" title="Facebook">👍</a>
+            <a class="red-social" href="#" aria-label="WhatsApp" id="wa-contacto" title="WhatsApp">💬</a>
+          </div>
+
+          <div class="contacto-map" style="margin-top:1.5rem">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3607!2d-57.635!3d-25.286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zAsunción!5e0!3m2!1ses!2spy!4v1234567890"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Ubicación del salón">
+            </iframe>
+          </div>
+        </div>
+
+        <div class="contacto-form-card">
+          <h3>Envianos un mensaje</h3>
+          <form id="contacto-form" novalidate>
+            <div class="form-row">
+              <div class="field">
+                <label class="field-label">Nombre *</label>
+                <input id="contacto-nombre" type="text" class="input" placeholder="Tu nombre" required>
+              </div>
+              <div class="field">
+                <label class="field-label">Teléfono</label>
+                <input id="contacto-telefono" type="tel" class="input" placeholder="0981 000 000">
+              </div>
+            </div>
+            <div class="field">
+              <label class="field-label">Email</label>
+              <input id="contacto-email" type="email" class="input" placeholder="tu@email.com">
+            </div>
+            <div class="field">
+              <label class="field-label">Mensaje *</label>
+              <textarea id="contacto-mensaje" class="textarea" rows="5" placeholder="¿En qué podemos ayudarte?" required></textarea>
+            </div>
+            <button type="submit" id="btn-contacto" class="btn btn-primary" style="width:100%;justify-content:center">Enviar mensaje</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="nav-logo-text">WEST Estudio</div>
+          <p>Tu espacio de belleza y bienestar. Profesionales dedicadas a realzar tu belleza natural.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Servicios</h4>
+          <ul>
+            <li><a href="#servicios" data-target="servicios" class="nav-scroll">Manicura</a></li>
+            <li><a href="#servicios" data-target="servicios" class="nav-scroll">Pedicura</a></li>
+            <li><a href="#servicios" data-target="servicios" class="nav-scroll">Peluquería</a></li>
+            <li><a href="#servicios" data-target="servicios" class="nav-scroll">Estética Facial</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Salón</h4>
+          <ul>
+            <li><a href="#nosotros" data-target="nosotros" class="nav-scroll">Nosotros</a></li>
+            <li><a href="#galeria"  data-target="galeria"  class="nav-scroll">Galería</a></li>
+            <li><a href="#reservar" data-target="reservar" class="nav-scroll">Reservar cita</a></li>
+            <li><a href="#contacto" data-target="contacto" class="nav-scroll">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 WEST Estudio. Todos los derechos reservados.</span>
+        <span style="opacity:.5">Desarrollado por Zarweb</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flotante -->
+  <div id="whatsapp-float" title="Contactar por WhatsApp">💬</div>
+
+</div><!-- /public-site -->
+
+
+<!-- ════════════════════════════════════════════════════════════
+     PANEL ADMIN
+════════════════════════════════════════════════════════════ -->
+<div id="admin-panel" style="display:none">
+
+  <!-- Sidebar -->
+  <div id="admin-sidebar">
+    <div class="sidebar-logo">
+      <strong>Panel de Admin</strong>
+      <small>WEST Estudio</small>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-item active" data-page="dashboard">
+        <span class="sidebar-icon">🏠</span> Dashboard
+      </div>
+      <div class="sidebar-item" data-page="citas">
+        <span class="sidebar-icon">📅</span> Citas
+      </div>
+      <div class="sidebar-item" data-page="servicios">
+        <span class="sidebar-icon">✨</span> Servicios
+      </div>
+      <div class="sidebar-item" data-page="packs">
+        <span class="sidebar-icon">🎁</span> Packs
+      </div>
+      <div class="sidebar-item" data-page="galeria">
+        <span class="sidebar-icon">🖼</span> Galería
+      </div>
+      <div class="sidebar-item" data-page="testimonios">
+        <span class="sidebar-icon">⭐</span> Testimonios
+      </div>
+      <div class="sidebar-item" data-page="mensajes">
+        <span class="sidebar-icon">📨</span> Mensajes
+        <span class="sidebar-badge" id="mensajes-badge" style="display:none">0</span>
+      </div>
+      <div class="sidebar-item" data-page="profesionales">
+        <span class="sidebar-icon">👩</span> Profesionales
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user" id="admin-user-name">Admin</div>
+      <button class="btn-logout" id="btn-logout">Cerrar sesión</button>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div id="admin-content">
+
+    <!-- Dashboard -->
+    <div id="admin-dashboard" class="admin-page active">
+      <div class="admin-page-header">
+        <h1>Dashboard</h1>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">📅</div>
+          <div>
+            <div class="stat-num" id="stat-citas-hoy">—</div>
+            <div class="stat-label">Citas hoy</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">⏳</div>
+          <div>
+            <div class="stat-num" id="stat-pendientes">—</div>
+            <div class="stat-label">Pendientes</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">📨</div>
+          <div>
+            <div class="stat-num" id="stat-mensajes">—</div>
+            <div class="stat-label">Mensajes nuevos</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">👥</div>
+          <div>
+            <div class="stat-num" id="stat-clientes">—</div>
+            <div class="stat-label">Clientes totales</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-card">
+        <div class="admin-card-head">
+          <h3>Citas pendientes</h3>
+          <button class="btn btn-sm btn-ghost" onclick="loadAdminPage('citas')">Ver todas →</button>
+        </div>
+        <div class="table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Fecha y hora</th>
+                <th>Cliente</th>
+                <th>Teléfono</th>
+                <th>Servicio / Pack</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody id="dashboard-citas-tbody">
+              <tr><td colspan="5" style="text-align:center;padding:1.5rem;color:var(--text-secondary)">Cargando…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Citas -->
+    <div id="admin-citas" class="admin-page">
+      <div class="admin-page-header">
+        <h1>Citas</h1>
+      </div>
+      <div class="admin-card">
+        <div class="table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Cliente</th>
+                <th>Servicio / Pack</th>
+                <th>Profesional</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="citas-tbody">
+              <tr><td colspan="7" style="text-align:center;padding:1.5rem;color:var(--text-secondary)">Cargando…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Servicios -->
+    <div id="admin-servicios" class="admin-page">
+      <div class="admin-page-header">
+        <h1>Servicios</h1>
+        <button class="btn btn-primary btn-sm" id="btn-new-servicio">+ Nuevo servicio</button>
+      </div>
+      <div class="admin-card">
+        <div class="table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Categoría</th>
+                <th>Servicio</th>
+                <th>Duración</th>
+                <th>Precio</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="servicios-tbody">
+              <tr><td colspan="6" style="text-align:center;padding:1.5rem;color:var(--text-secondary)">Cargando…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Packs -->
+    <div id="admin-packs" class="admin-page">
+      <div class="admin-page-header">
+        <h1>Packs y Combos</h1>
+        <button class="btn btn-primary btn-sm" id="btn-new-pack">+ Nuevo pack</button>
+      </div>
+      <div class="admin-card">
+        <div class="table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Pack</th>
+                <th>Precio</th>
+                <th>Precio original</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="packs-tbody">
+              <tr><td colspan="4" style="text-align:center;padding:1.5rem;color:var(--text-secondary)">Cargando…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Galería -->
+    <div id="admin-galeria" class="admin-page">
+      <div class="admin-page-header">
+        <h1>Galería</h1>
+        <button class="btn btn-primary btn-sm" id="btn-new-galeria">+ Agregar imagen</button>
+      </div>
+      <div class="admin-card" style="padding:1.5rem">
+        <div id="admin-galeria-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:.85rem">
+          <p style="color:var(--text-secondary)">Cargando…</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonios -->
+    <div id="admin-testimonios" class="admin-page">
+      <div class="admin-page-header">
+        <h1>Testimonios</h1>
+      </div>
+      <div class="admin-card">
+        <div class="table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Cliente</th>
+                <th>Opinión</th>
+                <th>Calificación</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="testimonios-tbody">
+              <tr><td colspan="5" style="text-align:center;padding:1.5rem;color:var(--text-secondary)">Cargando…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mensajes -->
+    <div id="admin-mensajes" class="admin-page">
+      <div class="admin-page-header">
+        <h1>Mensajes de contacto</h1>
+      </div>
+      <div class="admin-card">
+        <div class="table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Nombre</th>
+                <th>Contacto</th>
+                <th>Mensaje</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="mensajes-tbody">
+              <tr><td colspan="5" style="text-align:center;padding:1.5rem;color:var(--text-secondary)">Cargando…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Profesionales -->
+    <div id="admin-profesionales" class="admin-page">
+      <div class="admin-page-header">
+        <h1>Profesionales</h1>
+        <button class="btn btn-primary btn-sm" id="btn-new-profesional">+ Nueva profesional</button>
+      </div>
+      <div class="admin-card">
+        <div class="table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Especialidad</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="profesionales-tbody">
+              <tr><td colspan="4" style="text-align:center;padding:1.5rem;color:var(--text-secondary)">Cargando…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /admin-content -->
+</div><!-- /admin-panel -->
+
+
+<!-- ════════════════════════════════════════════════════════════
+     MODALES
+════════════════════════════════════════════════════════════ -->
+
+<!-- Login -->
+<div id="login-modal" class="modal-overlay hidden">
+  <div class="modal">
+    <div class="modal-head">
+      <h2>Acceso administrador</h2>
+      <button class="modal-close" id="login-modal-close">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="login-logo">
+        <span>💅</span>
+        <strong>Panel de Administración</strong>
+        <small>WEST Estudio</small>
+      </div>
+      <form id="login-form" novalidate>
+        <div class="field">
+          <label class="field-label">Usuario</label>
+          <input id="login-usuario" type="text" class="input" placeholder="Usuario" autocomplete="username" required>
+        </div>
+        <div class="field">
+          <label class="field-label">Contraseña</label>
+          <input id="login-password" type="password" class="input" placeholder="••••••••" autocomplete="current-password" required>
+        </div>
+        <div id="login-error" class="field-error" style="display:none;margin-bottom:.5rem"></div>
+        <button type="submit" id="login-btn" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:.5rem">Ingresar</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Servicio Modal -->
+<div id="servicio-modal" class="modal-overlay hidden">
+  <div class="modal">
+    <div class="modal-head">
+      <h2 id="servicio-modal-title">Nuevo servicio</h2>
+      <button class="modal-close" id="servicio-modal-close">✕</button>
+    </div>
+    <div class="modal-body">
+      <form id="servicio-form" novalidate>
+        <input type="hidden" id="servicio-id">
+        <div class="form-row">
+          <div class="field">
+            <label class="field-label">Nombre *</label>
+            <input id="servicio-nombre" type="text" class="input" placeholder="Nombre del servicio" required>
+          </div>
+          <div class="field">
+            <label class="field-label">Categoría</label>
+            <select id="servicio-categoria" class="select"></select>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label">Descripción</label>
+          <textarea id="servicio-descripcion" class="textarea" rows="2" placeholder="Breve descripción del servicio"></textarea>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label class="field-label">Duración (minutos)</label>
+            <input id="servicio-duracion" type="number" class="input" placeholder="Ej: 60" min="1">
+          </div>
+          <div class="field">
+            <label class="field-label">Precio (Gs.)</label>
+            <input id="servicio-precio" type="number" class="input" placeholder="Ej: 120000" min="0">
+          </div>
+        </div>
+        <div class="field">
+          <label style="display:flex;align-items:center;gap:.5rem;cursor:pointer">
+            <input id="servicio-activo" type="checkbox" checked>
+            <span class="field-label" style="margin:0">Servicio activo</span>
+          </label>
+        </div>
+        <div class="modal-foot" style="padding:0;margin-top:1rem">
+          <button type="submit" class="btn btn-primary">Guardar</button>
+          <button type="button" class="btn btn-ghost" id="servicio-modal-close2" onclick="document.getElementById('servicio-modal').classList.add('hidden')">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Pack Modal -->
+<div id="pack-modal" class="modal-overlay hidden">
+  <div class="modal">
+    <div class="modal-head">
+      <h2 id="pack-modal-title">Nuevo pack</h2>
+      <button class="modal-close" id="pack-modal-close">✕</button>
+    </div>
+    <div class="modal-body">
+      <form id="pack-form" novalidate>
+        <input type="hidden" id="pack-id">
+        <div class="field">
+          <label class="field-label">Nombre del pack *</label>
+          <input id="pack-nombre" type="text" class="input" placeholder="Ej: Pack Novia" required>
+        </div>
+        <div class="field">
+          <label class="field-label">Descripción</label>
+          <textarea id="pack-descripcion" class="textarea" rows="2" placeholder="Qué incluye el pack"></textarea>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label class="field-label">Precio pack (Gs.) *</label>
+            <input id="pack-precio" type="number" class="input" placeholder="Precio promocional" min="0" required>
+          </div>
+          <div class="field">
+            <label class="field-label">Precio original (Gs.)</label>
+            <input id="pack-precio-original" type="number" class="input" placeholder="Precio sin descuento" min="0">
+          </div>
+        </div>
+        <div class="modal-foot" style="padding:0;margin-top:1rem">
+          <button type="submit" class="btn btn-primary">Guardar</button>
+          <button type="button" class="btn btn-ghost" onclick="document.getElementById('pack-modal').classList.add('hidden')">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Galería Modal -->
+<div id="galeria-modal" class="modal-overlay hidden">
+  <div class="modal">
+    <div class="modal-head">
+      <h2>Agregar imagen</h2>
+      <button class="modal-close" id="galeria-modal-close">✕</button>
+    </div>
+    <div class="modal-body">
+      <form id="galeria-form" novalidate>
+        <div class="field">
+          <label class="field-label">URL de la imagen *</label>
+          <input id="galeria-url" type="url" class="input" placeholder="https://…/foto.jpg" required>
+        </div>
+        <div class="field">
+          <label class="field-label">Título</label>
+          <input id="galeria-titulo" type="text" class="input" placeholder="Ej: Diseño de uñas verano">
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label class="field-label">Categoría</label>
+            <input id="galeria-categoria" type="text" class="input" placeholder="Ej: Manicura">
+          </div>
+          <div class="field">
+            <label class="field-label">Orden</label>
+            <input id="galeria-orden" type="number" class="input" value="0" min="0">
+          </div>
+        </div>
+        <div class="modal-foot" style="padding:0;margin-top:1rem">
+          <button type="submit" class="btn btn-primary">Agregar</button>
+          <button type="button" class="btn btn-ghost" onclick="document.getElementById('galeria-modal').classList.add('hidden')">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Profesional Modal -->
+<div id="profesional-modal" class="modal-overlay hidden">
+  <div class="modal">
+    <div class="modal-head">
+      <h2 id="prof-modal-title">Nueva profesional</h2>
+      <button class="modal-close" id="prof-modal-close">✕</button>
+    </div>
+    <div class="modal-body">
+      <form id="prof-form" novalidate>
+        <input type="hidden" id="prof-id">
+        <div class="field">
+          <label class="field-label">Nombre completo *</label>
+          <input id="prof-nombre" type="text" class="input" placeholder="Nombre y apellido" required>
+        </div>
+        <div class="field">
+          <label class="field-label">Especialidad</label>
+          <input id="prof-especialidad" type="text" class="input" placeholder="Ej: Manicura y Nail Art">
+        </div>
+        <div class="field">
+          <label class="field-label">Descripción breve</label>
+          <textarea id="prof-bio" class="textarea" rows="2" placeholder="Breve presentación de la profesional"></textarea>
+        </div>
+        <div class="modal-foot" style="padding:0;margin-top:1rem">
+          <button type="submit" class="btn btn-primary">Guardar</button>
+          <button type="button" class="btn btn-ghost" onclick="document.getElementById('profesional-modal').classList.add('hidden')">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox" class="hidden">
+  <button id="lightbox-close" aria-label="Cerrar">✕</button>
+  <img src="" alt="Imagen galería">
+</div>
+
+<!-- Toast container -->
+<div id="toast-container"></div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
