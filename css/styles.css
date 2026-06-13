@@ -1030,6 +1030,17 @@ footer {
   border-bottom: 1px solid rgba(255,255,255,.12);
   margin-bottom: 1.2rem;
 }
+.sidebar-logo-img {
+  display: block;
+  height: 72px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+  margin-bottom: .9rem;
+  background: #fff;
+  padding: 6px;
+}
 .sidebar-logo strong {
   font-family: var(--font-display);
   font-size: 1.2rem;
