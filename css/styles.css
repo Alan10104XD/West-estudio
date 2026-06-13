@@ -4,35 +4,35 @@
 
 /* ── Variables ─────────────────────────────────────────────── */
 :root {
-  --primary:       #B5688A;
-  --primary-dark:  #8F4D6C;
-  --primary-light: #D4A0BA;
-  --primary-ultra: #F9EFF4;
-  --gold:          #C9A96E;
-  --gold-light:    #EDD9A3;
+  --primary:       #7B9E90;
+  --primary-dark:  #5A8272;
+  --primary-light: #A8C5BB;
+  --primary-ultra: #EBF2EF;
+  --gold:          #C5B49A;
+  --gold-light:    #DDD0BC;
 
-  --bg:            #FDF9F7;
-  --bg-alt:        #F7F0EC;
+  --bg:            #F6F2EA;
+  --bg-alt:        #EDE8DF;
   --bg-card:       #FFFFFF;
-  --border:        #EAD8E0;
+  --border:        #DDD7CB;
 
-  --text:          #2C2420;
-  --text-secondary:#7A6E6A;
-  --text-light:    #A89E9A;
+  --text:          #2C2C2A;
+  --text-secondary:#6B6558;
+  --text-light:    #9E9588;
 
-  --success:       #6BAA8A;
-  --warning:       #D4A017;
+  --success:       #7B9E90;
+  --warning:       #C5B49A;
   --danger:        #C45656;
 
-  --shadow-sm:     0 1px 4px rgba(44, 36, 32, .08);
-  --shadow:        0 4px 16px rgba(44, 36, 32, .12);
-  --shadow-lg:     0 8px 32px rgba(44, 36, 32, .16);
+  --shadow-sm:     0 1px 4px rgba(44, 44, 42, .08);
+  --shadow:        0 4px 16px rgba(44, 44, 42, .10);
+  --shadow-lg:     0 8px 32px rgba(44, 44, 42, .14);
 
   --radius:        12px;
   --radius-sm:     8px;
   --radius-pill:   999px;
 
-  --font-display:  'Playfair Display', Georgia, serif;
+  --font-display:  'Raleway', 'Avenir Next', system-ui, sans-serif;
   --font-body:     'Inter', system-ui, sans-serif;
 
   --transition:    .22s ease;
@@ -186,14 +186,14 @@ section { padding: 5rem 0; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 70px;
+  height: 80px;
 }
 .nav-logo {
   display: flex;
   align-items: center;
   gap: .75rem;
 }
-.nav-logo img { height: 42px; width: 42px; object-fit: contain; border-radius: 50%; }
+.nav-logo img { height: 64px; width: auto; object-fit: contain; border-radius: 10px; }
 .nav-logo-text {
   font-family: var(--font-display);
   font-size: 1.3rem;
@@ -262,7 +262,7 @@ section { padding: 5rem 0; }
 /* ── Hero ───────────────────────────────────────────────────── */
 #inicio {
   min-height: 100vh;
-  padding-top: 70px;
+  padding-top: 80px;
   display: flex;
   align-items: center;
   position: relative;

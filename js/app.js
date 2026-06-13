@@ -3,10 +3,10 @@
    Toda la lógica frontend (~950 líneas)
    ============================================================ */
 
-const API_URL   = 'http://localhost:8000';
+const API_URL = 'https://api.westestudio.bar';
 const KEY_TOKEN = 'salon_token';
 const KEY_USER  = 'salon_user';
-const WHATSAPP  = '595981234567';
+const WHATSAPP  = '595982389566';
 
 /* ── Estado global ─────────────────────────────────────────── */
 let categorias    = [];
