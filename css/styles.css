@@ -176,12 +176,12 @@ section { padding: 5rem 0; }
   left: 0;
   right: 0;
   z-index: 1000;
-  background: var(--primary);
+  background: var(--primary-dark);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(255,255,255,.15);
   transition: box-shadow var(--transition);
 }
-#navbar.scrolled { box-shadow: var(--shadow); background: var(--primary-dark); }
+#navbar.scrolled { box-shadow: var(--shadow); }
 .nav-inner {
   display: flex;
   align-items: center;
