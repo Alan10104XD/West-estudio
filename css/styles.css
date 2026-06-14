@@ -4,10 +4,10 @@
 
 /* ── Variables ─────────────────────────────────────────────── */
 :root {
-  --primary:       #92A896;
-  --primary-dark:  #71897B;
-  --primary-light: #B5C7BB;
-  --primary-ultra: #EBF0EC;
+  --primary:       #7C9484;
+  --primary-dark:  #5E7568;
+  --primary-light: #A5BAAC;
+  --primary-ultra: #E6EDE8;
   --gold:          #C3B29A;
   --gold-light:    #DDD0BC;
 
@@ -168,6 +168,7 @@ section { padding: 5rem 0; }
 }
 .textarea { resize: vertical; min-height: 90px; }
 .field-error { font-size: .78rem; color: var(--danger); margin-top: .3rem; }
+.field-hint { display: block; font-size: .75rem; color: var(--text-light); margin-top: .35rem; }
 
 /* ── Navbar ─────────────────────────────────────────────────── */
 #navbar {

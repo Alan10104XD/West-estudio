@@ -845,9 +845,16 @@
     <div class="modal-body">
       <form id="galeria-form" novalidate>
         <div class="field">
-          <label class="field-label">URL de la imagen *</label>
-          <input id="galeria-url" type="url" class="input" placeholder="https://…/foto.jpg" required>
+          <label class="field-label">Imagen *</label>
+          <input id="galeria-file" type="file" accept="image/*" class="input">
+          <small class="field-hint">Se optimiza automáticamente para cargar rápido.</small>
         </div>
+        <div class="field" id="galeria-preview-wrap" style="display:none">
+          <img id="galeria-preview" alt="Vista previa"
+               style="width:100%;max-height:220px;object-fit:contain;border-radius:var(--radius-sm);background:var(--bg-alt)">
+          <small id="galeria-size-info" class="field-hint"></small>
+        </div>
+        <input id="galeria-url" type="hidden">
         <div class="field">
           <label class="field-label">Título</label>
           <input id="galeria-titulo" type="text" class="input" placeholder="Ej: Diseño de uñas verano">

@@ -794,14 +794,59 @@ window.deleteGaleriaItem = async function(id) {
   } catch (err) { showToast(err.message, 'error'); }
 };
 
+/* Optimiza una imagen en el navegador: redimensiona y comprime a JPEG.
+   Devuelve un data URL listo para guardar. */
+function optimizeImage(file, maxDim = 1280, quality = 0.72) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const img = new Image();
+      img.onload = () => {
+        let { width, height } = img;
+        if (width > maxDim || height > maxDim) {
+          if (width >= height) { height = Math.round(height * maxDim / width); width = maxDim; }
+          else { width = Math.round(width * maxDim / height); height = maxDim; }
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#fff';
+        ctx.fillRect(0, 0, width, height);
+        ctx.drawImage(img, 0, 0, width, height);
+        resolve(canvas.toDataURL('image/jpeg', quality));
+      };
+      img.onerror = () => reject(new Error('No se pudo leer la imagen'));
+      img.src = reader.result;
+    };
+    reader.onerror = () => reject(new Error('No se pudo leer el archivo'));
+    reader.readAsDataURL(file);
+  });
+}
+
 function initGaleriaModal() {
   document.getElementById('galeria-modal-close')?.addEventListener('click', () =>
     document.getElementById('galeria-modal').classList.add('hidden'));
 
+  document.getElementById('galeria-file')?.addEventListener('change', async e => {
+    const file = e.target.files[0];
+    if (!file) return;
+    try {
+      const dataUrl = await optimizeImage(file);
+      document.getElementById('galeria-url').value = dataUrl;
+      document.getElementById('galeria-preview').src = dataUrl;
+      document.getElementById('galeria-preview-wrap').style.display = '';
+      const kb = Math.round(dataUrl.length * 0.75 / 1024);
+      document.getElementById('galeria-size-info').textContent = `Optimizada: ~${kb} KB`;
+    } catch (err) { showToast(err.message, 'error'); }
+  });
+
   document.getElementById('galeria-form')?.addEventListener('submit', async e => {
     e.preventDefault();
+    const imagen = document.getElementById('galeria-url').value;
+    if (!imagen) { showToast('Seleccioná una imagen', 'warning'); return; }
     const payload = {
-      imagen_url: document.getElementById('galeria-url').value.trim(),
+      imagen_url: imagen,
       titulo:     document.getElementById('galeria-titulo').value.trim() || null,
       categoria:  document.getElementById('galeria-categoria').value.trim() || null,
       orden:      parseInt(document.getElementById('galeria-orden').value) || 0,
@@ -812,6 +857,8 @@ function initGaleriaModal() {
       showToast('Imagen agregada', 'success');
       document.getElementById('galeria-modal').classList.add('hidden');
       document.getElementById('galeria-form').reset();
+      document.getElementById('galeria-preview-wrap').style.display = 'none';
+      document.getElementById('galeria-url').value = '';
       await loadAdminGaleria();
     } catch (err) { showToast(err.message, 'error'); }
   });
