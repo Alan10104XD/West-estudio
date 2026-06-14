@@ -664,8 +664,8 @@ section { padding: 5rem 0; }
 }
 .equipo-card:hover { box-shadow: var(--shadow); }
 .equipo-avatar {
-  width: 70px;
-  height: 70px;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
   background: var(--primary-ultra);
   display: flex;
@@ -674,6 +674,12 @@ section { padding: 5rem 0; }
   font-size: 2rem;
   margin: 0 auto .85rem;
   border: 2px solid var(--primary-light);
+  overflow: hidden;
+}
+.equipo-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .equipo-nombre {
   font-family: var(--font-display);

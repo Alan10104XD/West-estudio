@@ -319,7 +319,9 @@ function renderEquipo() {
   const emojis = ['💆','💇','✨','💅','👁️'];
   grid.innerHTML = profesionales.map((p, i) => `
     <div class="equipo-card">
-      <div class="equipo-avatar">${emojis[i % emojis.length]}</div>
+      <div class="equipo-avatar">${p.foto_url
+        ? `<img src="${escapeHtml(p.foto_url)}" alt="${escapeHtml(p.nombre)}" loading="lazy">`
+        : emojis[i % emojis.length]}</div>
       <div class="equipo-nombre">${escapeHtml(p.nombre)}</div>
       ${p.especialidad ? `<div class="equipo-especialidad">${escapeHtml(p.especialidad)}</div>` : ''}
       ${p.bio ? `<div class="equipo-bio">${escapeHtml(p.bio)}</div>` : ''}
@@ -960,7 +962,14 @@ async function loadAdminProfesionales() {
   }
   tbody.innerHTML = lista.map(p => `
     <tr>
-      <td><strong>${escapeHtml(p.nombre)}</strong></td>
+      <td>
+        <div style="display:flex;align-items:center;gap:.6rem">
+          ${p.foto_url
+            ? `<img src="${escapeHtml(p.foto_url)}" alt="" style="width:38px;height:38px;border-radius:50%;object-fit:cover">`
+            : `<span style="width:38px;height:38px;border-radius:50%;background:var(--primary-ultra);display:inline-flex;align-items:center;justify-content:center">👤</span>`}
+          <strong>${escapeHtml(p.nombre)}</strong>
+        </div>
+      </td>
       <td>${escapeHtml(p.especialidad||'—')}</td>
       <td style="max-width:200px;font-size:.82rem;color:var(--text-secondary)">${escapeHtml(p.bio||'—')}</td>
       <td>
@@ -996,12 +1005,35 @@ function openProfesionalModal(p = null) {
   document.getElementById('prof-nombre').value = p?.nombre || '';
   document.getElementById('prof-especialidad').value = p?.especialidad || '';
   document.getElementById('prof-bio').value = p?.bio || '';
+  document.getElementById('prof-file').value = '';
+  document.getElementById('prof-foto').value = p?.foto_url || '';
+  const wrap = document.getElementById('prof-preview-wrap');
+  if (p?.foto_url) {
+    document.getElementById('prof-preview').src = p.foto_url;
+    document.getElementById('prof-size-info').textContent = '';
+    wrap.style.display = '';
+  } else {
+    wrap.style.display = 'none';
+  }
   modal.classList.remove('hidden');
 }
 
 function initProfesionalModal() {
   document.getElementById('prof-modal-close')?.addEventListener('click', () =>
     document.getElementById('profesional-modal').classList.add('hidden'));
+
+  document.getElementById('prof-file')?.addEventListener('change', async e => {
+    const file = e.target.files[0];
+    if (!file) return;
+    try {
+      const dataUrl = await optimizeImage(file, 600, 0.75);
+      document.getElementById('prof-foto').value = dataUrl;
+      document.getElementById('prof-preview').src = dataUrl;
+      document.getElementById('prof-preview-wrap').style.display = '';
+      const kb = Math.round(dataUrl.length * 0.75 / 1024);
+      document.getElementById('prof-size-info').textContent = `Optimizada: ~${kb} KB`;
+    } catch (err) { showToast(err.message, 'error'); }
+  });
 
   document.getElementById('prof-form')?.addEventListener('submit', async e => {
     e.preventDefault();
@@ -1010,6 +1042,7 @@ function initProfesionalModal() {
       nombre:      document.getElementById('prof-nombre').value.trim(),
       especialidad:document.getElementById('prof-especialidad').value.trim() || null,
       bio:         document.getElementById('prof-bio').value.trim() || null,
+      foto_url:    document.getElementById('prof-foto').value || null,
       activo: true,
     };
     try {
