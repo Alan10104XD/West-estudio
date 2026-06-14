@@ -4,24 +4,24 @@
 
 /* ── Variables ─────────────────────────────────────────────── */
 :root {
-  --primary:       #7B9E90;
-  --primary-dark:  #5A8272;
-  --primary-light: #A8C5BB;
-  --primary-ultra: #EBF2EF;
-  --gold:          #C5B49A;
+  --primary:       #92A896;
+  --primary-dark:  #71897B;
+  --primary-light: #B5C7BB;
+  --primary-ultra: #EBF0EC;
+  --gold:          #C3B29A;
   --gold-light:    #DDD0BC;
 
-  --bg:            #F6F2EA;
-  --bg-alt:        #EDE8DF;
+  --bg:            #F2ECE0;
+  --bg-alt:        #E8E0D1;
   --bg-card:       #FFFFFF;
-  --border:        #DDD7CB;
+  --border:        #DAD2C3;
 
   --text:          #2C2C2A;
   --text-secondary:#6B6558;
   --text-light:    #9E9588;
 
-  --success:       #7B9E90;
-  --warning:       #C5B49A;
+  --success:       #92A896;
+  --warning:       #C3B29A;
   --danger:        #C45656;
 
   --shadow-sm:     0 1px 4px rgba(44, 44, 42, .08);
